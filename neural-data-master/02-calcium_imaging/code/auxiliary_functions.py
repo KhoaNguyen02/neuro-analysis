@@ -50,7 +50,7 @@ def temporal_evolution(file_name=None, output_file_name=None):
 
     movie_original = cm.load(file_name)
 
-    figure = plt.figure(constrained_layout=True)
+    figure = plt.figure(figsize=(12, 7), constrained_layout=True)
     gs = figure.add_gridspec(5, 6)
 
     figure_ax1 = figure.add_subplot(gs[0:2, 0:3])
@@ -77,12 +77,12 @@ def temporal_evolution(file_name=None, output_file_name=None):
             0, movie_original.shape[0],)/10, movie_original[:, x, y], color=color[i])
 
         figure_ax_i = figure.add_subplot(gs[i, 4:])
-        figure_ax_i.hist(movie_original[:, x, y], 50, color=color[i])
+        figure_ax_i.hist(movie_original[:, x, y], 30, color=color[i])
         figure_ax_i.set_xlim((300, 1000))
         figure_ax_i.set_ylabel('#')
         figure_ax_i.set_xlabel('Pixel value')
 
-    figure.set_size_inches([5., 5.])
+     # figure.set_size_inches([5., 5.])
     figure.savefig(output_file_name)
 
     return
